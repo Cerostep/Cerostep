@@ -1,8 +1,8 @@
  ## 🎲 Hello,你好 I’m Leeon 👋
 
 
-- 👀 I’m interested in coding and computer science
-- 🧑‍💻 I'm a software engineer
+- 👀 I’m interested in coding and cloud native
+- 🧑‍💻 I'm a DevOps engineer
 
 
 

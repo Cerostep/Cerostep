@@ -1,6 +1,5 @@
  ## 🎲 Hello,你好 I’m Leeon 👋
 
-<img align='right' src="giphy.webp" width="240">
 
 - 👀 I’m interested in coding and computer science
 - 🧑‍💻 I'm a software engineer

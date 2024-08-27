@@ -1,8 +1,8 @@
- ## 🎲 Hello,你好 I’m Leeon 👋
+ ## 🎲 Hello, I’m Leeon 👋
 
 
-- 👀 I’m interested in coding and cloud native
-- 🧑‍💻 I'm a DevOps engineer
+- 👀 I love to brag; if I don't brag, I'll die.
+- 🧑‍💻 Everyone is welcome to join in the bragging.
 
 
 

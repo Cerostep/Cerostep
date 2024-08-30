@@ -1,12 +1,12 @@
- ## 🎲 Hello, I’m Leeon 👋
+ ## Hello, I’m Leeon.
 
 
-- 👀 I love to brag; if I don't brag, I'll die.
-- 🧑‍💻 Everyone is welcome to join in the bragging.
+- I love to brag; if I don't brag, I'll die.
+- Everyone is welcome to join in the bragging.
 
 
 
-### 🛠️ Languages and Tools:
+### Languages and Tools:
 
 ![Leeon GitHub stats](https://github-readme-stats.vercel.app/api?username=leeonfu&show_icons=true&theme=transparent)
 

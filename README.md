@@ -11,19 +11,19 @@
 ![Leeon GitHub stats](https://github-readme-stats.vercel.app/api?username=leeonfu&show_icons=true&theme=transparent)
 
 <p align="left"> 
-  <a href="https://www.python.org/" target="_blank">
+  <a>
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original-wordmark.svg" alt="python" width="60" height="60"/>
   </a>&nbsp;&nbsp;
-  <a href="https://golang.org" target="_blank">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="go" width="60" height="60"/>
+  <a>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="go" width="120" height="120"/>
   </a>&nbsp;&nbsp;
-  <a href="https://www.docker.com/" target="_blank">
+  <a>
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="60" height="60"/>
   </a>&nbsp;&nbsp;
-  <a href="https://kubernetes.io/" target="_blank">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain-wordmark.svg" alt="kubernetes" width="70" height="70"/>
+  <a>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain-wordmark.svg" alt="kubernetes" width="60" height="60"/>
   </a>&nbsp;&nbsp;
-  <a href="https://www.ansible.com" target="_blank">
+  <a>
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/ansible/ansible-original-wordmark.svg" alt="ansible" width="60" height="60"/>
   </a>&nbsp;&nbsp;
    <a href="https://www.gnu.org/software/bash/manual/bash.html" target="_blank">

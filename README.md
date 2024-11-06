@@ -1,8 +1,8 @@
  ## Hello, I’m Leeon.
 
 
-- I love to brag; if I don't brag, I'll die.
-- Everyone is welcome to join in the bragging.
+- 尊重和谦虚是做人第一准则.
+- Respect and humility are the first principles of being a human.
 
 
 ### Languages and Tools:
@@ -32,10 +32,6 @@
   
   <a>
     <img src="https://raw.githubusercontent.com/leeonfu/devicon/master/icons/bash/bash-original.svg" alt="bash" width="60" height="60"/>
-  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  
-  <a>
-    <img src="https://raw.githubusercontent.com/leeonfu/devicon/master/icons/linux/linux.svg" alt="linux" width="300" height="300"/>
   </a>
 </p>
 

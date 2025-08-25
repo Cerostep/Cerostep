@@ -37,7 +37,3 @@
 
 ---
 
-Visitors Count:
-
-[![Visitors Count](https://profile-counter.glitch.me/{leeonfu}/count.svg)](https://github.com/leeonfu)
-

@@ -1,24 +1,26 @@
 ---
-layout: home
-title: 首页
+layout: default
+title: Home
+lang: en
+lang_url: /zh/
 ---
 
-# 欢迎来到 Cerostep
+# DevOps × AI Agents
 
-这里关注 AI 应用与工程实践，尤其是怎样把检索、Agent 编排和模型能力组合成可靠、可验证的系统。
+Cerostep is a learning and engineering blog about building, delivering, and operating AI-powered systems. It brings together DevOps practices and AI agent engineering, with an emphasis on practical experiments, clear trade-offs, and lessons worth reusing.
 
-## 从跨境电商 AI 购物助手开始
+## Topics
 
-第一篇文章以“推荐露营装备，预算中低，寄到悉尼”为例，讨论 AI 购物助手如何理解需求、召回并核验商品，以及如何在质量、延迟和成本之间选择合适的执行策略。
+- **DevOps and platform engineering** — automation, CI/CD, cloud-native practices, observability, reliability, and developer experience.
+- **AI agent engineering** — retrieval and tool use, agent orchestration, context management, evaluation, and safety guardrails.
+- **AI application delivery and operations** — integrating AI into existing systems while improving quality, cost, latency, and reliability.
+- **Learning through practice** — documenting experiments, technical decisions, troubleshooting, and lessons learned.
 
-文章涵盖关键词与向量混合检索、子 Agent 的派发与并行、上下文压缩、工具与模型路由，以及面向生产环境的系统架构。
+## Latest article
 
-{% assign featured_post = site.posts | first %}
-[阅读文章：{{ featured_post.title }}]({{ featured_post.url | relative_url }})
+{% assign localized_posts = site.posts | where: "lang", page.lang %}
+{% for post in localized_posts limit: 5 %}
+- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.excerpt | strip_html | strip }}
+{% endfor %}
 
-## 关注的工程原则
-
-- 用混合检索发现候选，并通过证据与硬约束核验结果。
-- 按任务依赖和实际收益决定是否并行或派发 Agent。
-- 压缩上下文时保留完成任务必需的约束、证据与状态。
-- 根据质量、延迟、成本和风险选择工具与模型。
+The blog is written in English and Chinese. Use the language switch in the header to view the corresponding translation.

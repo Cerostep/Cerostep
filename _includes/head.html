@@ -10,6 +10,16 @@
     .language-toggle { border: 1px solid #828282; border-radius: 999px; padding: 4px 10px; color: inherit; text-decoration: none; }
     .language-toggle:hover { background-color: #eee; text-decoration: none; }
   </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}

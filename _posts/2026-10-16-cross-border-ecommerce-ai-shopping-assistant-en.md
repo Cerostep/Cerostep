@@ -127,23 +127,23 @@ Suppose:
 
 If the tasks run sequentially:
 
-\[
+$$
 T_{\text{serial}} = 4 + 5 + 2 = 11\text{ seconds}
-\]
+$$
 
 If the first two tasks run in parallel:
 
-\[
+$$
 T_{\text{parallel}} = \max(4,5) + 2 = 7\text{ seconds}
-\]
+$$
 
 Under ideal conditions, parallel execution reduces the total time from 11 to 7 seconds, or about 36%.
 
 But if parallel work adds 1.5 seconds of startup and coordination overhead plus 1 second to resolve conflicting data, then:
 
-\[
+$$
 T_{\text{parallel}} = 5 + 1.5 + 2 + 1 = 9.5\text{ seconds}
-\]
+$$
 
 The benefit is much smaller. These numbers illustrate the calculation; they are not production benchmarks.
 
@@ -208,11 +208,11 @@ A summary that looks semantically similar to the original conversation may still
 
 A basic metric is task completion rate:
 
-\[
+$$
 Q_{\text{compression}} =
 \frac{\text{test tasks completed correctly after compression}}
 {\text{all test tasks}}
-\]
+$$
 
 Evaluation should also track hard-constraint violation rate, factual error rate, tool-call accuracy, and final recommendation quality.
 
@@ -228,11 +228,11 @@ Hard-constraint violations should be tracked independently; correct results else
 
 For example:
 
-\[
+$$
 R_{\text{violation}} =
 \frac{\text{tasks violating at least one hard constraint}}
 {\text{all tasks}}
-\]
+$$
 
 If a compression strategy reduces token cost by 40% but noticeably increases shipping errors, it should not be considered successful. The 40% figure is illustrative, not a universal threshold.
 
@@ -333,20 +333,20 @@ A router should consider:
 
 Routing can be modeled as a quality-constrained cost optimization problem:
 
-\[
+$$
 a^* = \arg\min_{a \in A}
 \left[
 C(a) + \lambda L(a) + \mu R(a)
 \right]
-\]
+$$
 
 where:
 
-- \(a\) is a candidate execution strategy;
-- \(C(a)\) is its expected cost;
-- \(L(a)\) is its expected latency;
-- \(R(a)\) is its expected error risk;
-- \(\lambda\) and \(\mu\) are business-defined weights.
+- $a$ is a candidate execution strategy;
+- $C(a)$ is its expected cost;
+- $L(a)$ is its expected latency;
+- $R(a)$ is its expected error risk;
+- $\lambda$ and $\mu$ are business-defined weights.
 
 The system should also enforce a minimum quality threshold; it must not choose an obviously unreliable strategy just to reduce cost. Weights and thresholds should be calibrated through offline evaluation and online experiments, not fixed by intuition alone.
 

@@ -13,14 +13,10 @@
     window.addEventListener("DOMContentLoaded", function () {
       if (!window.mermaid) return;
 
-      document.querySelectorAll(".language-mermaid").forEach(function (container) {
-        var code = container.querySelector("code");
-        if (!code) return;
-
-        var diagram = document.createElement("pre");
-        diagram.className = "mermaid";
-        diagram.textContent = code.textContent;
-        container.replaceWith(diagram);
+      document.querySelectorAll("pre > code.language-mermaid").forEach(function (code) {
+        var container = code.parentElement;
+        container.className = "mermaid";
+        container.textContent = code.textContent;
       });
 
       window.mermaid.initialize({ startOnLoad: false, securityLevel: "strict" });

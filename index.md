@@ -1,4 +1,3 @@
-
 ---
 layout: home
 title: 首页
@@ -14,7 +13,8 @@ title: 首页
 
 文章涵盖关键词与向量混合检索、子 Agent 的派发与并行、上下文压缩、工具与模型路由，以及面向生产环境的系统架构。
 
-[阅读文章：跨境电商 AI 购物助手：检索、Agent 编排与上下文管理]({{ '/2026/10/16/cross-border-ecommerce-ai-shopping-assistant/' | relative_url }})
+{% assign featured_post = site.posts | first %}
+[阅读文章：{{ featured_post.title }}]({{ featured_post.url | relative_url }})
 
 ## 关注的工程原则
 

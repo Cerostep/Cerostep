@@ -1,16 +1,13 @@
 
-title: 我的个人博客
-description: 记录技术、生活与思考
-author: 博主
-lang: zh-CN
+title: Cerostep
+description: Learning, practice, and engineering notes on DevOps and AI agents.
+author: Cerostep
+lang: en
 
 theme: minima
 
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
-
-header_pages:
-  - about.md
 
 plugins:
   - jekyll-feed

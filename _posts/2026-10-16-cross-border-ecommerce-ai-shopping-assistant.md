@@ -2,6 +2,9 @@
 layout: post
 title: "跨境电商 AI 购物助手：检索、Agent 编排与上下文管理"
 date: 2026-10-16 00:00:00 +0800
+permalink: /2026/10/15/cross-border-ecommerce-ai-shopping-assistant/
+lang: zh
+lang_url: /en/2026/10/15/cross-border-ecommerce-ai-shopping-assistant/
 categories:
   - AI
   - 跨境电商

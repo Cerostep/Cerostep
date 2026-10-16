@@ -4,6 +4,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <style>
+    .language-switch { display: inline-flex; align-items: center; gap: .5rem; margin-left: 1rem; }
+    .language-current { font-size: .85em; opacity: .75; }
+    .language-toggle { border: 1px solid #828282; border-radius: 999px; padding: 4px 10px; color: inherit; text-decoration: none; }
+    .language-toggle:hover { background-color: #eee; text-decoration: none; }
+  </style>
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog</title>
+<style>
+:root{--bg:#f3f5f7;--ink:#14202b;--mute:#5d6b78;--acc:#0b6e6e;--rule:#d5dce2;--code:#e6ebef}
+@media(prefers-color-scheme:dark){:root{--bg:#10171d;--ink:#e3e9ee;--mute:#93a1ad;--acc:#5cc4c0;--rule:#27333d;--code:#19232b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--rule)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px}
+#site{font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none}
+.lang button{font:inherit;font-size:.85rem;background:none;border:1px solid var(--rule);color:var(--mute);padding:2px 10px;cursor:pointer}
+.lang button:first-child{border-radius:4px 0 0 4px}.lang button:last-child{border-radius:0 4px 4px 0;border-left:0}
+.lang button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sub{color:var(--mute);margin:32px 0 8px}
+.item{display:grid;grid-template-columns:110px 1fr;gap:4px 20px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.item time{color:var(--mute);font-size:.9rem;padding-top:5px;font-variant-numeric:tabular-nums}
+.item h2{margin:0 0 6px;font-size:1.35rem;line-height:1.35}
+.item h2 a{color:var(--ink);text-decoration:none}.item h2 a:hover{color:var(--acc)}
+.item p{margin:0 0 8px;color:var(--mute)}
+.more{color:var(--acc);text-decoration:none;font-weight:600}
+.pager{display:flex;justify-content:space-between;padding:24px 0 56px}
+.pager a{color:var(--acc);text-decoration:none}.pager span{color:var(--mute)}
+article{padding:36px 0 64px;font-family:Georgia,"Noto Serif SC","Songti SC",SimSun,serif;font-size:1.06rem;line-height:1.85}
+article h1{font:700 2rem/1.3 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;margin:.2em 0}
+article h2,article h3{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;margin-top:2em}
+article img{max-width:100%}article a{color:var(--acc)}
+article pre{background:var(--code);padding:14px;overflow-x:auto;border-radius:6px;font-size:.88rem;line-height:1.55}
+article code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:.9em}article pre code{padding:0;background:none}
+article blockquote{margin:1em 0;padding-left:16px;border-left:3px solid var(--acc);color:var(--mute)}
+article table{border-collapse:collapse;display:block;overflow-x:auto}article td,article th{border:1px solid var(--rule);padding:6px 12px}
+.meta{color:var(--mute);font-size:.9rem;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.note{background:var(--code);padding:8px 12px;border-radius:6px;font-size:.9rem}
+.back{display:inline-block;margin-top:28px;color:var(--acc);text-decoration:none}
+@media(max-width:560px){.item{grid-template-columns:1fr}.item time{padding:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a id="site" href="#/"></a>
+  <div class="lang" role="group" aria-label="Language">
+    <button data-l="zh">中文</button><button data-l="en">EN</button>
+  </div>
+</div></header>
+<main class="wrap" id="app"></main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+/* ===== 站点配置 / Site config ===== */
+const SITE = {
+  title: { zh: "我的博客", en: "My Blog" },
+  sub:   { zh: "DevOps、AI 工程与折腾笔记", en: "Notes on DevOps, AI engineering and tinkering" }
+};
+const PER_PAGE = 10;
+/* ================================== */
+
+const T = {
+  zh:{read:"阅读全文",back:"← 返回列表",prev:"← 上一页",next:"下一页 →",empty:"还没有文章。",missing:"没有找到这篇文章。",fb:"这篇文章暂无中文版，已显示英文版。",page:"第 {n} / {m} 页"},
+  en:{read:"Read more",back:"← Back to posts",prev:"← Newer",next:"Older →",empty:"No posts yet.",missing:"Post not found.",fb:"This post has no English version yet; showing the Chinese one.",page:"Page {n} of {m}"}
+};
+let lang = localStorage.getItem("lang") || (navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en");
+let posts = [];
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pick = o => (o && (o[lang] || o.zh || o.en)) || "";
+
+function setLang(l){
+  lang = l; localStorage.setItem("lang", l);
+  document.documentElement.lang = l === "zh" ? "zh-CN" : "en";
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  $("#site").textContent = SITE.title[l];
+  document.title = SITE.title[l];
+  route();
+}
+
+function list(page){
+  const m = Math.max(1, Math.ceil(posts.length / PER_PAGE));
+  page = Math.min(Math.max(1, page || 1), m);
+  const slice = posts.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  let h = `<p class="sub">${esc(SITE.sub[lang])}</p>`;
+  if (!slice.length) h += `<p>${T[lang].empty}</p>`;
+  for (const p of slice) {
+    h += `<section class="item"><time datetime="${esc(p.date)}">${esc(p.date)}</time><div>
+      <h2><a href="#/post/${encodeURIComponent(p.id)}">${esc(pick(p.title))}</a></h2>
+      <p>${esc(pick(p.summary))}</p>
+      <a class="more" href="#/post/${encodeURIComponent(p.id)}">${T[lang].read}</a></div></section>`;
+  }
+  if (m > 1) {
+    h += `<nav class="pager">${page > 1 ? `<a href="#/page/${page - 1}">${T[lang].prev}</a>` : "<span></span>"}
+      <span>${T[lang].page.replace("{n}", page).replace("{m}", m)}</span>
+      ${page < m ? `<a href="#/page/${page + 1}">${T[lang].next}</a>` : "<span></span>"}</nav>`;
+  }
+  $("#app").innerHTML = h;
+}
+
+async function post(id){
+  const p = posts.find(x => x.id === id);
+  if (!p) { $("#app").innerHTML = `<p class="sub">${T[lang].missing}</p><a class="back" href="#/">${T[lang].back}</a>`; return; }
+  const other = lang === "zh" ? "en" : "zh";
+  let note = "", r = await fetch(`posts/${encodeURIComponent(id)}.${lang}.md`);
+  if (!r.ok) { r = await fetch(`posts/${encodeURIComponent(id)}.${other}.md`); note = `<p class="note">${T[lang].fb}</p>`; }
+  if (!r.ok) { $("#app").innerHTML = `<p class="sub">${T[lang].missing}</p><a class="back" href="#/">${T[lang].back}</a>`; return; }
+  const html = marked.parse(await r.text());
+  $("#app").innerHTML = `<article><div class="meta">${esc(p.date)}</div>${note}${html}</article><a class="back" href="#/">${T[lang].back}</a>`;
+  document.title = pick(p.title) + " - " + SITE.title[lang];
+  window.scrollTo(0, 0);
+}
+
+function route(){
+  const h = location.hash.replace(/^#\/?/, "");
+  if (h.startsWith("post/")) post(decodeURIComponent(h.slice(5)));
+  else { list(h.startsWith("page/") ? parseInt(h.slice(5), 10) : 1); document.title = SITE.title[lang]; }
+}
+
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => setLang(b.dataset.l));
+window.addEventListener("hashchange", route);
+fetch("posts.json").then(r => r.json()).then(d => {
+  posts = d.sort((a, b) => b.date.localeCompare(a.date));
+  setLang(lang);
+}).catch(() => { $("#app").innerHTML = "<p>posts.json load failed</p>"; });
+</script>
+</body>
+</html>

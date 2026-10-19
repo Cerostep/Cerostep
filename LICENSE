@@ -1,24 +1,38 @@
-This is free and unencumbered software released into the public domain.
+Copyright (c) 2026 Cerostep
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, merge, publish, distribute, and create derivative works of the
+Software, subject to the following conditions:
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+1. Non-commercial use only. The Software may be used, copied, modified,
+   published, and redistributed solely for non-commercial purposes.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+2. Commercial use prohibited. Without prior written permission from Cerostep,
+   no person may use the Software or any derivative work for commercial
+   purposes, including selling it, incorporating it into a commercial product
+   or paid service, or using it to provide services for commercial gain.
 
-For more information, please refer to <https://unlicense.org>
+3. Redistribution. Any redistribution of the Software or derivative works
+   must include this license and retain all applicable copyright notices.
+   Modified versions must clearly identify that changes were made.
+
+4. Attribution. Public redistribution of the Software or derivative works
+   must provide appropriate attribution to Cerostep.
+
+5. Reservation of rights. All rights not expressly granted by this license
+   are reserved. Commercial use requires prior written authorization from
+   Cerostep.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM,
+OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+This is a custom non-commercial license and is not an OSI-approved open-source
+license. The term "open source" has a specific meaning in the software
+licensing community; this license restricts commercial use and therefore does
+not meet the Open Source Definition.

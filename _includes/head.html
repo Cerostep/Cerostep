@@ -9,6 +9,36 @@
     .language-current { font-size: .85em; opacity: .75; }
     .language-toggle { border: 1px solid #828282; border-radius: 999px; padding: 4px 10px; color: inherit; text-decoration: none; }
     .language-toggle:hover { background-color: #eee; text-decoration: none; }
+    .site-nav .trigger { display: inline-block; vertical-align: middle; }
+    .category-menu { display: inline-block; position: relative; margin-left: .75rem; vertical-align: middle; line-height: 1; }
+    .category-menu-trigger { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .category-menu-button { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border: 1px solid #e8e8e8; border-radius: 5px; color: #424242; cursor: pointer; }
+    .category-menu-button:hover { background-color: #eee; }
+    .category-menu-trigger:focus-visible + .category-menu-button { outline: 2px solid #2a7ae2; outline-offset: 2px; }
+    .category-menu-panel { display: none; position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; box-sizing: border-box; width: min(360px, calc(100vw - 30px)); max-height: 70vh; overflow-y: auto; padding: 1rem; border: 1px solid #e8e8e8; border-radius: 5px; background: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, .12); line-height: 1.5; text-align: left; }
+    .category-menu-trigger:checked ~ .category-menu-panel { display: block; }
+    .category-menu-group + .category-menu-group { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid #e8e8e8; }
+    .category-menu-group h2 { margin: 0 0 .35rem; font-size: 1rem; }
+    .category-menu-group ul { margin: 0; list-style: none; }
+    .category-menu-group li + li { margin-top: .25rem; }
+    .post-content pre:not(.mermaid),
+    .post-content pre:not(.mermaid) code { background-color: #f0f0f0; }
+    .post-content pre.mermaid { width: 100%; max-width: 100%; padding: 0; border: 0; background: transparent; }
+    .post-content pre.mermaid.single-column { width: min(var(--flowchart-width), 36rem); max-width: 100%; margin-left: auto; margin-right: auto; }
+    .post-content pre.mermaid svg { display: block; width: 100%; max-width: 100% !important; height: auto; margin: 0 auto; box-sizing: border-box; border: 0; border-radius: 0; background-color: transparent; }
+    .post-content pre.mermaid svg .node rect,
+    .post-content pre.mermaid svg .node circle,
+    .post-content pre.mermaid svg .node ellipse,
+    .post-content pre.mermaid svg .node polygon,
+    .post-content pre.mermaid svg .node path,
+    .post-content pre.mermaid svg .cluster rect { fill: #fff !important; stroke: #000 !important; }
+    .post-content pre.mermaid svg .edgeLabel rect,
+    .post-content pre.mermaid svg .labelBkg { fill: #fff !important; }
+    .post-content pre.mermaid svg .edgeLabel p { background-color: transparent !important; }
+    @media screen and (max-width: 600px) {
+      .site-nav .category-menu { position: absolute; top: 0; right: 42px; margin: 0; }
+      .category-menu-panel { position: fixed; top: 60px; right: 15px; }
+    }
   </style>
   <script>
     window.MathJax = {
@@ -36,7 +66,25 @@
       });
 
       window.mermaid.initialize({ startOnLoad: false, securityLevel: "strict" });
-      window.mermaid.run({ querySelector: ".mermaid" });
+      window.mermaid.run({ querySelector: ".mermaid" }).then(function () {
+        document.querySelectorAll(".post-content pre.mermaid").forEach(function (container) {
+          var nodeColumns = Array.from(container.querySelectorAll("svg .node"))
+            .map(function (node) {
+              var match = (node.getAttribute("transform") || "").match(/translate\(\s*(-?[\d.]+)/);
+              return match ? Number(match[1]) : null;
+            })
+            .filter(function (column) {
+              return column !== null;
+            });
+
+          if (nodeColumns.length > 1 && nodeColumns.every(function (column) {
+            return Math.abs(column - nodeColumns[0]) < 1;
+          })) {
+            container.classList.add("single-column");
+            container.style.setProperty("--flowchart-width", container.querySelector("svg").viewBox.baseVal.width + "px");
+          }
+        });
+      });
     });
   </script>
 </head>

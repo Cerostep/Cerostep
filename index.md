@@ -19,7 +19,7 @@ Cerostep is a learning and engineering blog about building, delivering, and oper
 ## Latest article
 
 {% assign localized_posts = site.posts | where: "lang", page.lang %}
-{% for post in localized_posts limit: 5 %}
+{% for post in localized_posts limit: 1 %}
 - [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.excerpt | strip_html | strip }}
 {% endfor %}
 

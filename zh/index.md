@@ -21,7 +21,7 @@ Cerostep 是一个关于 DevOps 与 AI Agent 学习和工程实践的博客，�
 ## 最新文章
 
 {% assign localized_posts = site.posts | where: "lang", page.lang %}
-{% for post in localized_posts limit: 5 %}
+{% for post in localized_posts limit: 1 %}
 - [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.excerpt | strip_html | strip }}
 {% endfor %}
 

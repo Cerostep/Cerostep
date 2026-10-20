@@ -13,5 +13,7 @@ This is a bilingual blog documenting technical learning and engineering practice
 
 ## Latest Articles
 
-- 中文：[跨境电商 AI 购物助手：检索、Agent 编排与上下文管理](_posts/2026-10-16-cross-border-ecommerce-ai-shopping-assistant.md)
+<!-- latest-articles:start -->
+- 中文: [从 Chunk 到 RAG：搭建企业员工制度 AI 知识库](_posts/2026-10-20-enterprise-employee-handbook-rag.md)
 - English: [Cross-Border E-Commerce AI Shopping Assistant: Retrieval, Agent Orchestration, and Context Management](_posts/2026-10-16-cross-border-ecommerce-ai-shopping-assistant-en.md)
+<!-- latest-articles:end -->
